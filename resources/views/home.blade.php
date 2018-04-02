@@ -1,13 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+.button1 {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+
+}
+</style>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard
                    
-                                <button type="submit" class="btn btn-success" style="color:black;">
+                                <button type="submit" class="button1" style="color:black;">
                                    <a href="{{ url('/test/create') }}">ADD</a> 
                                 </button>
             
@@ -38,6 +53,8 @@
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
+
+
             <div class="panel-heading">
             <h3 class="panel-title"><center> Table</center></h3>
             </div>
@@ -110,7 +127,7 @@
                      </div>
                   </div>
                   <div class="row">
-                    
+                    <center>{{ $tests->links() }}</center>
                  </div>
             </div>     
       </div>

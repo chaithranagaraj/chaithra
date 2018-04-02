@@ -14,8 +14,9 @@ class TestController extends Controller
     }
     public function create()
     {
-    	$tests = Test::paginate(5);
-    	return view('test.create',compact('tests'));
+    	$tests = Test::paginate(3);
+    	return view('test.create',['tests'=>$tests]);
+
     }
 
     public function store(Request $request)
@@ -26,18 +27,23 @@ class TestController extends Controller
     			'message' =>'required|max:50',
     			
     		]);
-
+    	// $test = new Test;
+    	// $test->name = $request->name;
+    	// $test->email = $request->email;
+    	// $test->message = $request->message;
+    	// $test->created_by = Auth::User()->id;
+    	// $test->save();
     	Test::create([
     		'name' =>$request['name'],
             'email' =>$request['email'],
     		'message' =>$request['message'],
-    		'created_by' =>Auth::User()->user_id,
+    		'created_by' =>Auth::User()->id,
     		]);
     	return redirect('/test/create');
     }
-    public function edit(Test $test){
-        $tests = Test::paginate(5);
-        return view('test.edit',compact('tests','test'));
+    public function edit($id){
+        $tests = Test::where('test_id',$id)->first();
+        return view('test.edit',['tests'=>$tests]);
     }
     public function update(Request $request,Test $test){
         $this->validate($request,[
@@ -53,8 +59,7 @@ class TestController extends Controller
             'name' =>$request['name'],
             'email' =>$request['email'],
             'message' =>$request['message'],
-           
-            'created_by' =>Auth::User()->user_id,
+          
 
             ]);
             return redirect('/test/create');

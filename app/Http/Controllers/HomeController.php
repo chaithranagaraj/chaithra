@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Test;
+use Auth;
 class HomeController extends Controller
 {
     /**
@@ -23,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $tests = Test::paginate(5);
+        $tests = Test::where('created_by',Auth::user()->id)->paginate(3);
         return view('home',['tests'=>$tests]);
     }
 }

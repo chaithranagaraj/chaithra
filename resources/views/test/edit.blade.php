@@ -8,14 +8,14 @@
                 <div class="panel-heading">Fill the details</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ url('/test/update/'.$test->test_id) }}">
+                    <form class="form-horizontal" method="POST" action="{{ url('/test/update/'.$tests->test_id) }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Name</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ $test->name  }}" required autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ $tests->name  }}" required autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -29,7 +29,7 @@
                             <label for="email" class="col-md-4 control-label">email</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="text" class="form-control" name="email" value="{{ $test->email }}"  required autofocus>
+                                <input id="email" type="text" class="form-control" name="email" value="{{ $tests->email }}"  required autofocus>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -43,7 +43,7 @@
                             <label for="message" class="col-md-4 control-label">message</label>
 
                             <div class="col-md-6">
-                                <input id="message" type="text" class="form-control" name="message" value="{{ $test->message }}" required>
+                                <input id="message" type="text" class="form-control" name="message" value="{{ $tests->message }}" required>
 
                                 @if ($errors->has('message'))
                                     <span class="help-block">
